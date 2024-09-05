@@ -5,12 +5,23 @@
 Först måste vi skapa en Context genom att använda `React.createContext`. Detta gör det möjligt att dela state mellan komponenter.
 
 ```jsx
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 
-// Skapa en Context
-const MyContext = createContext();
+// Definiera typen för Context-värdet
+interface MyContextType {
+  value: string;
+  setValue: (value: string) => void;
+}
 
-export const MyProvider = ({ children }) => {
+// Skapa en Context med en initial typ
+const MyContext = createContext<MyContextType | undefined>(undefined);
+
+// Definiera typen för props (i detta fall bara `children`)
+interface MyProviderProps {
+  children: ReactNode;
+}
+
+export function MyProvider({ children }: MyProviderProps) {
   const [value, setValue] = useState("Hej från Context!");
 
   return (
@@ -18,7 +29,7 @@ export const MyProvider = ({ children }) => {
       {children}
     </MyContext.Provider>
   );
-};
+}
 
 export default MyContext;
 ```
