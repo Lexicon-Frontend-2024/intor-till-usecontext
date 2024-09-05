@@ -1,6 +1,4 @@
-# Enkel övning med `useContext` i React
-
-I den här övningen kommer vi att skapa och använda `useContext`-hooken i React för att dela data mellan komponenter utan att behöva skicka props genom flera nivåer.
+# Intro till useContext
 
 ## Steg 1: Skapa en Context
 
